@@ -39,10 +39,16 @@ int daysBetween(const std::string& dateStr) {
     return diffDays;
 }
 
-int main() {
+int main(int argc, char* argv[]) {
     string enteredDate;
-    cout << "Enter a date (YYYY-MM-DD): ";
-    cin >> enteredDate;
+    if (argc==1) {
+        cout << "Enter a date (YYYY-MM-DD): ";
+        cin >> enteredDate;
+    } else if (argc==2) {
+        enteredDate = argv[1];
+    } else {
+        cout << "Too many argument (expected 1 or 2, but entered 3 or more)";
+    }
 
     if (!isValidDateFormat(enteredDate)) {
         cout << "Invalid date format entered" << endl;
